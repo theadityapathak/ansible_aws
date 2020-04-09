@@ -1,0 +1,13 @@
+---
+# tasks file for nginx
+- name: install nginx
+  apt:
+     name: nginx
+     state: present
+     update_cache: yes
+- name: copy template
+  template:
+     src: index.j2
+     dest: /var/www/html/index.html
+  notify:
+  - nginx-start
